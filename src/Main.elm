@@ -5,10 +5,11 @@ import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
 
 
+
 main =
     Browser.sandbox { init = init, update = update, view = view }
 
- 
+
 -- MODEL
 
 
@@ -28,6 +29,7 @@ init =
 type Msg
     = Increment
     | Decrement
+    | Reset
 
 
 update : Msg -> Model -> Model
@@ -38,6 +40,9 @@ update msg model =
 
         Decrement ->
             model - 1
+
+        Reset ->
+            model - model
 
 
 
@@ -50,4 +55,5 @@ view model =
         [ button [ onClick Decrement ] [ text "-" ]
         , div [] [ text (String.fromInt model) ]
         , button [ onClick Increment ] [ text "+" ]
+        , button [ onClick Reset][text "reset"]
         ]
