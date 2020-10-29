@@ -1,16 +1,16 @@
-module Main exposing (Model, Msg(..), main, update, view)
+module Main exposing (main)
 
 import Browser
 import Html exposing (Attribute, Html, div, input, text)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput)
-import Main exposing (Msg)
 
 
 
 -- MAIN
 
 
+main : Program () Model Msg
 main =
     Browser.sandbox { init = init, update = update, view = view }
 
@@ -22,6 +22,11 @@ main =
 type alias Model =
     { content : String
     }
+
+
+init : Model
+init =
+    { content = "" }
 
 
 
