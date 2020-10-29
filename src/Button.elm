@@ -1,13 +1,13 @@
-module Main exposing (main)
+module Main exposing (Model, Msg(..), init, main, update, view)
 
 import Browser
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
 
 
-
 main =
     Browser.sandbox { init = init, update = update, view = view }
+
 
 
 -- MODEL
@@ -55,5 +55,5 @@ view model =
         [ button [ onClick Decrement ] [ text "-" ]
         , div [] [ text (String.fromInt model) ]
         , button [ onClick Increment ] [ text "+" ]
-        , button [ onClick Reset][text "reset"]
+        , button [ onClick Reset ] [ text "reset" ]
         ]
