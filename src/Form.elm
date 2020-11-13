@@ -1,9 +1,11 @@
 module Main exposing (main)
 
 import Browser
+import Char exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput)
+import String exposing (length)
 
 
 
@@ -76,8 +78,13 @@ viewInput t p v toMsg =
 
 viewValidation : Model -> Html msg
 viewValidation model =
-    if model.password == model.passwordAgain then
-        div [ style "color" "green" ] [ text "OK" ]
+    if length model.password < 8 then
+        div [ style "color" "red" ] [ text "Password must be at least 8 characters long." ]
+        -- else if  then
+        --     div [ style "color" "red" ] [ text "大文字、小文字、数字を含めてください" ]
+
+    else if model.password /= model.passwordAgain then
+        div [ style "color" "red" ] [ text "Passwords do not match!" ]
 
     else
-        div [ style "color" "red" ] [ text "Passwords do not match!" ]
+        div [ style "color" "green" ] [ text "OK" ]
